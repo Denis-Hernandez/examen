@@ -6,20 +6,36 @@ function insertar_sql($sql){
         $last_id = $conn->insert_id;
         //echo "New record created successfully. Last inserted ID is: " . $last_id;
         return $last_id;
-      } else {
+    } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-      }
+    }
     mysqli_close($conn);
 }
 
-function ejecutar_sql($sql){
+function existe_registro($sql){
     $conn = conectar();
-    if (mysqli_query($conn, $sql)) {
-        echo "New record created successfully";
-      } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-      }
+
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        return true;
+    } else {
+        return false;
+    }
     mysqli_close($conn);
+}
+
+function lista_preguntas($sql){
+    $conn = conectar();
+    $preguntas = array();
+    
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+            array_push($preguntas, $row);
+        }
+    }
+    mysqli_close($conn);
+    return $preguntas;
 }
 
 function conectar(){

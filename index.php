@@ -14,7 +14,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <header>
         <?php
-        if(isset($_POST["nombreExamen"])){
+        if(isset($_POST["nombreExamen"]) || isset($_GET["examen"])){
             ?>
             <h1 class="header__title"><?php echo $_POST["nombreExamen"];?></h1>
             <?php
@@ -22,10 +22,12 @@
         ?>
     </header>
     <?php
-    if(!isset($_POST["nombreExamen"])){
+    if(!isset($_POST["nombreExamen"]) && !isset($_GET["examen"])){
         require_once 'crear_examen.php';
-    }else{
+    }else if(isset($_POST["nombreExamen"])){
         require_once 'crear_preguntas.php';
+    }else{
+        require_once 'examen.php';
     }
     ?>
     <footer></footer>
