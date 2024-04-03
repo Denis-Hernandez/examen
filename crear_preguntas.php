@@ -51,6 +51,10 @@
         </div>
         
         <button class="btn btn-primary" onClick="insertar()">Guardar</button>
+
+        <form class="formulario border border-4 p-5 bg-light" style='display: none' id="popup">
+        <label id="link_test"></label>
+        </form>
     </div>
     <script>
         function insertar(){
@@ -62,7 +66,6 @@
                 //console.log(preguntas[index].value);
                 respuesta = document.getElementsByName("respuesta"+(index+1));
                 check = document.getElementsByName("check"+(index+1));
-                if (respuesta[0].value == true) {cheched}
                 let pregunta = {
                     "idexamen" : "<?php echo $idExamen;?>",
                     "pregunta" : preguntas[index].value,
@@ -88,6 +91,10 @@
                     console.log(data);
                 });
             }
+
+            popup = document.getElementById("popup");
+            popup.style.display = 'block';
+            document.getElementById("link_test").innerHTML="http://localhost/examen/examen/<?php echo $cod_examen;?>";
         }
         
     </script>
