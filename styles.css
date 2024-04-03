@@ -1,0 +1,43 @@
+body{
+    display: flex;
+    flex-direction: column;
+    align-content: stretch;
+    justify-content: space-between;
+    align-items: stretch;
+    margin: 0;
+}
+header,footer{
+    background: #039;
+    height: 10vh;
+    color: #039;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.section_crear_examen{
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.section_crear_preguntas{
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    Overflow-y:scroll;
+}
+
+.formulario{
+    border: 15px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.header__title {
+    color: #FFC947;
+    padding-left: 15px;
+  }
